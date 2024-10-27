@@ -47,6 +47,11 @@ const colors = {
     dark: '#696969',
     main: '#a9a9a9',
   },
+  airline_white: {
+    light: '#FFFFFF',
+    dark: '#696969',
+    main: '#a9a9a9',
+  },
 
   airline_gray: {
     gray: {

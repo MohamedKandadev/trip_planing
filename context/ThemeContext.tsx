@@ -21,7 +21,7 @@ type ThemeProviderProps = {
 
 export const ThemeProvider: FC<ThemeProviderProps> = ({children}) => {
   const systemTheme = useColorScheme();
-  const [useSystemTheme, setUseSystemTheme] = useState(true);
+  const [useSystemTheme, setUseSystemTheme] = useState(false);
   const [isDarkTheme, setIsDarkTheme] = useState(false);
 
   const toggleTheme = () => {

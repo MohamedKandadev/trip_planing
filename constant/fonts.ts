@@ -6,31 +6,31 @@ const FONTS = {
     new_york: {
       light: {
         fontSize: SIZES.text.h1,
-        fontFamily: 'Roboto-Regular',
+        fontFamily: 'new-york-medium_regular',
       },
       bold: {
         fontSize: SIZES.text.h1,
-        fontFamily: 'Roboto-Regular',
+        fontFamily: 'new-york-medium_regular',
       },
     },
     san_francisco: {
       fontSize: SIZES.text.h1,
-      fontFamily: 'Roboto-Regular',
+      fontFamily: 'SF Pro Display Regular',
     },
   },
   h2: {
     new_york: {
       fontSize: SIZES.text.h2,
-      fontFamily: 'Roboto-Regular',
+      fontFamily: 'new york medium regular',
     },
     san_francisco: {
       light: {
         fontSize: SIZES.text.h2,
-        fontFamily: 'Roboto-Regular',
+        fontFamily: 'SF Pro Display Light',
       },
       bold: {
         fontSize: SIZES.text.h2,
-        fontFamily: 'Roboto-Regular',
+        fontFamily: 'SF Pro Display Bold',
       },
     },
   },
@@ -38,11 +38,11 @@ const FONTS = {
     san_francisco: {
       light: {
         fontSize: SIZES.text.h3,
-        fontFamily: 'Roboto-Regular',
+        fontFamily: 'SF Pro Display Light',
       },
       bold: {
         fontSize: SIZES.text.h3,
-        fontFamily: 'Roboto-Regular',
+        fontFamily: 'SF Pro Display Bold',
       },
     },
   },
@@ -50,11 +50,11 @@ const FONTS = {
     san_francisco: {
       light: {
         fontSize: SIZES.text.h4,
-        fontFamily: 'Roboto-Regular',
+        fontFamily: 'SF Pro Display Light',
       },
       bold: {
         fontSize: SIZES.text.h4,
-        fontFamily: 'Roboto-Regular',
+        fontFamily: 'SF Pro Display Bold',
       },
     },
   },
@@ -62,11 +62,11 @@ const FONTS = {
     san_francisco: {
       light: {
         fontSize: SIZES.text.h5,
-        fontFamily: 'Roboto-Regular',
+        fontFamily: 'SF Pro Display Light',
       },
       bold: {
         fontSize: SIZES.text.h5,
-        fontFamily: 'Roboto-Regular',
+        fontFamily: 'SF Pro Display Bold',
       },
     },
   },
@@ -74,11 +74,11 @@ const FONTS = {
     san_francisco: {
       light: {
         fontSize: SIZES.text.h6,
-        fontFamily: 'Roboto-Regular',
+        fontFamily: 'SF Pro Display Light',
       },
       bold: {
         fontSize: SIZES.text.h6,
-        fontFamily: 'Roboto-Regular',
+        fontFamily: 'SF Pro Display Bold',
       },
     },
   },
@@ -87,11 +87,11 @@ const FONTS = {
     san_francisco: {
       light: {
         fontSize: SIZES.text.pr1,
-        fontFamily: 'Roboto-Regular',
+        fontFamily: 'SF Pro Display Light',
       },
       bold: {
         fontSize: SIZES.text.pr1,
-        fontFamily: 'Roboto-Regular',
+        fontFamily: 'SF Pro Display Bold',
       },
     },
   },
@@ -100,11 +100,11 @@ const FONTS = {
     san_francisco: {
       light: {
         fontSize: SIZES.text.h2,
-        fontFamily: 'Roboto-Regular',
+        fontFamily: 'SF Pro Display Light',
       },
       bold: {
         fontSize: SIZES.text.h2,
-        fontFamily: 'Roboto-Regular',
+        fontFamily: 'SF Pro Display Bold',
       },
     },
   },
@@ -113,11 +113,11 @@ const FONTS = {
     san_francisco: {
       light: {
         fontSize: SIZES.text.pr3,
-        fontFamily: 'Roboto-Regular',
+        fontFamily: 'SF Pro Display Light',
       },
       bold: {
         fontSize: SIZES.text.pr3,
-        fontFamily: 'Roboto-Regular',
+        fontFamily: 'SF Pro Display Bold',
       },
     },
   },
@@ -126,11 +126,11 @@ const FONTS = {
     san_francisco: {
       light: {
         fontSize: SIZES.text.pr4,
-        fontFamily: 'Roboto-Regular',
+        fontFamily: 'SF Pro Display Light',
       },
       bold: {
         fontSize: SIZES.text.pr4,
-        fontFamily: 'Roboto-Regular',
+        fontFamily: 'SF Pro Display Bold',
       },
     },
   },

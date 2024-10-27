@@ -27,6 +27,7 @@ const SIZES = {
     small: 4,
     medium: 8,
     large: 12,
+    xlarge: 20,
     rounded: 50, // for fully rounded shapes
   },
 };

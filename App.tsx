@@ -1,20 +1,17 @@
 import {SafeAreaView, StyleSheet, Text, View} from 'react-native';
 import React from 'react';
 import {ThemeProvider, useTheme} from './context/ThemeContext';
-import Button from './components/common/Button';
-import Header from './components/common/Header';
-import colors from './constant/colors';
+import {NavigationContainer} from '@react-navigation/native';
+import MainNavigation from './navigations/MainNavigation';
 
 type Props = {};
 
 const App = (props: Props) => {
   return (
     <ThemeProvider>
-      <SafeAreaView
-        style={{flex: 1, backgroundColor: colors.airline_deep_dark.dark}}>
-        <Button />
-        <Header />
-      </SafeAreaView>
+      <NavigationContainer>
+        <MainNavigation />
+      </NavigationContainer>
     </ThemeProvider>
   );
 };
