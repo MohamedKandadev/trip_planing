@@ -1,5 +1,9 @@
 import {createSlice} from '@reduxjs/toolkit';
-import {signInUser} from '../../../api/services/supabaseActions';
+import {
+  signInUser,
+  signOut,
+  signUpUser,
+} from '../../../api/services/supabaseActions';
 
 interface AuthState {
   isAuthenticated: boolean;
@@ -19,11 +23,11 @@ const authSlice = createSlice({
   name: 'auth',
   initialState,
   reducers: {
-    setAuthenticated: (state, action) => {
-      state.isAuthenticated = action.payload;
-    },
     setUser: (state, action) => {
       state.user = action.payload;
+      state.error = null;
+      state.status = 'succeeded';
+      state.isAuthenticated = true;
     },
   },
   extraReducers: builder => {
@@ -40,9 +44,26 @@ const authSlice = createSlice({
       .addCase(signInUser.rejected, (state, action) => {
         state.status = 'failed';
         state.error = action.payload as string;
+      })
+      .addCase(signUpUser.pending, state => {
+        state.status = 'loading';
+      })
+      .addCase(signUpUser.fulfilled, (state, action) => {
+        state.status = 'succeeded';
+        state.error = null;
+      })
+      .addCase(signUpUser.rejected, (state, action) => {
+        state.status = 'failed';
+        state.error = action.payload as string;
+      })
+      .addCase(signOut.fulfilled, state => {
+        state.user = null;
+        state.isAuthenticated = false;
+        state.error = null;
+        state.status = 'succeeded';
       });
   },
 });
 
 export default authSlice.reducer;
-export const {setAuthenticated, setUser} = authSlice.actions;
+export const {setUser} = authSlice.actions;

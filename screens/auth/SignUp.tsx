@@ -15,39 +15,45 @@ import images from '../../constant/images';
 import SignInForm from '../../components/signin/SignInForm';
 import FONTS from '../../constant/fonts';
 import Button from '../../components/common/Button';
-import {NavigationScreenProps} from '../../types/interfaces/pages';
+import SignUpForm from '../../components/signin/SignUpForm';
 import {ROUTE} from '../../types/enums/navigation';
-import {useDispatch, useSelector} from 'react-redux';
-import {RootState} from '../../store';
-import Input from '../../components/common/Input';
+import {NavigationScreenProps} from '../../types/interfaces/pages';
+import {yupResolver} from '@hookform/resolvers/yup';
 import {useFormik} from 'formik';
 import {
-  initialSignInValues,
-  signInSchema,
-  SignInValues,
+  initialSignUpValues,
+  signUpSchema,
+  SignUpValues,
 } from '../../helpers/formValidation';
-import {signInUser} from '../../api/services/supabaseActions';
+import Input from '../../components/common/Input';
+import {useDispatch, useSelector} from 'react-redux';
+import {RootState} from '../../store';
+import {signUpUser} from '../../api/services/supabaseActions';
 import Toast from 'react-native-toast-message';
 
-const SignIn: FC<NavigationScreenProps> = ({navigation}) => {
+const SignUp: FC<NavigationScreenProps> = ({navigation}) => {
   const {setColor, isDarkTheme} = useTheme();
-  const auth = useSelector((state: RootState) => state.auth);
-  console.log('🚀 ~ auth:', auth);
   const dispatch = useDispatch();
+  const auth = useSelector((state: RootState) => state.auth);
 
   const {values, errors, touched, handleChange, handleBlur, handleSubmit} =
     useFormik({
-      initialValues: initialSignInValues,
-      validationSchema: signInSchema,
-      onSubmit: (values: SignInValues) => {
+      initialValues: initialSignUpValues,
+      validationSchema: signUpSchema,
+      onSubmit: (values: SignUpValues) => {
         try {
-          dispatch(signInUser(values));
-        } catch (error) {}
+          dispatch(signUpUser(values));
+        } catch (error) {
+          console.log(error);
+
+          Toast.show({text1: 'sddsd', type: 'success', position: 'top'});
+        }
       },
     });
 
   useEffect(() => {
     if (auth.status === 'failed') {
+      console.log(auth.error);
       Toast.show({
         text1: auth.error!,
         type: 'error',
@@ -55,8 +61,8 @@ const SignIn: FC<NavigationScreenProps> = ({navigation}) => {
         visibilityTime: 3000,
         text1Style: {...FONTS.pr2.san_francisco.light},
       });
-    } else if (auth.status === 'succeeded' && auth.isAuthenticated) {
-      navigation.navigate(ROUTE.HOME);
+    } else if (auth.status === 'succeeded') {
+      navigation.navigate(ROUTE.SIGNIN);
     }
   }, [auth.status]);
 
@@ -71,13 +77,20 @@ const SignIn: FC<NavigationScreenProps> = ({navigation}) => {
       }}>
       <View style={styles.signinContainer}>
         <View>
-          <HeadingOne title="Sign In" />
+          <HeadingOne title="Sign Up" />
           <Image
-            source={isDarkTheme ? images.image_6 : images.image_1}
+            source={isDarkTheme ? images.image_7 : images.image_2}
             style={styles.signinImage}
             resizeMode="contain"
           />
           <View style={{paddingHorizontal: SIZES.spacing.xl}}>
+            <Input
+              label="Name"
+              name="name"
+              isError={errors.name && touched.name ? true : false}
+              onChangeText={handleChange('name')}
+              value={values.name}
+            />
             <Input
               label="E-mail"
               name="email"
@@ -93,7 +106,7 @@ const SignIn: FC<NavigationScreenProps> = ({navigation}) => {
               value={values.password}
               secureTextEntry
             />
-            <Pressable onPress={() => navigation.navigate(ROUTE.SIGNUP)}>
+            <Pressable onPress={() => navigation.navigate(ROUTE.SIGNIN)}>
               <Text
                 style={[
                   styles.signupQuetion,
@@ -104,7 +117,7 @@ const SignIn: FC<NavigationScreenProps> = ({navigation}) => {
                     ),
                   },
                 ]}>
-                You don´t have an account? Sign up
+                Already have an account? Sign in
               </Text>
             </Pressable>
           </View>
@@ -117,7 +130,7 @@ const SignIn: FC<NavigationScreenProps> = ({navigation}) => {
   );
 };
 
-export default SignIn;
+export default SignUp;
 
 const styles = StyleSheet.create({
   signinContainer: {
@@ -127,15 +140,15 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
   },
   signinImage: {
-    width: SIZES.width,
-    maxWidth: 393,
-    height: 308,
-    marginTop: -50,
+    width: 393,
+    height: 212,
     marginBottom: SIZES.spacing.xl,
+    marginTop: 10,
   },
   signupQuetion: {
     textAlign: 'center',
     ...FONTS.pr2.san_francisco.light,
     marginTop: SIZES.spacing.xs * 10,
+    marginBottom: 50,
   },
 });

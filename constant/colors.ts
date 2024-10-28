@@ -38,7 +38,7 @@ const colors = {
     main: '#a9a9a9',
   },
   airline_red: {
-    light: '#839EFF',
+    light: '#FF83A1',
     dark: '#696969',
     main: '#a9a9a9',
   },

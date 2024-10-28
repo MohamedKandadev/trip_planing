@@ -1,19 +1,39 @@
 import {Pressable, StyleSheet, Text, View} from 'react-native';
-import React from 'react';
+import React, {FC} from 'react';
 import {useTheme} from '../../context/ThemeContext';
 import FONTS from '../../constant/fonts';
+import SIZES from '../../constant/sizes';
+import colors from '../../constant/colors';
+import {buttonProps} from '../../types/interfaces/pages';
 
 type Props = {};
 
-const Button = (props: Props) => {
-  const {theme, toggleTheme} = useTheme();
-  console.log(theme);
+const Button: FC<buttonProps> = ({title, onPress}) => {
+  const {setColor, toggleTheme} = useTheme();
 
   return (
-    <Pressable onPress={toggleTheme}>
-      <Text style={{backgroundColor: theme.airline_blue}}>Button</Text>
-      <Text style={{color: theme.text, ...FONTS.h1.new_york.bold}}>
-        Toggle Theme
+    <Pressable
+      onPress={onPress}
+      style={[
+        styles.button,
+        {
+          backgroundColor: setColor(
+            colors.airline_white.light,
+            colors.airline_dark.light,
+          ),
+        },
+      ]}>
+      <Text
+        style={[
+          styles.buttonText,
+          {
+            color: setColor(
+              colors.airline_dark.light,
+              colors.airline_gray.gray300.light,
+            ),
+          },
+        ]}>
+        {title}
       </Text>
     </Pressable>
   );
@@ -21,4 +41,15 @@ const Button = (props: Props) => {
 
 export default Button;
 
-const styles = StyleSheet.create({});
+const styles = StyleSheet.create({
+  button: {
+    height: 64,
+    borderRadius: SIZES.borderRadius.large,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  buttonText: {
+    textAlign: 'center',
+    ...FONTS.pr1.san_francisco.bold,
+  },
+});

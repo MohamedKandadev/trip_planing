@@ -99,11 +99,11 @@ const FONTS = {
   pr2: {
     san_francisco: {
       light: {
-        fontSize: SIZES.text.h2,
+        fontSize: SIZES.text.pr2,
         fontFamily: 'SF Pro Display Light',
       },
       bold: {
-        fontSize: SIZES.text.h2,
+        fontSize: SIZES.text.pr2,
         fontFamily: 'SF Pro Display Bold',
       },
     },

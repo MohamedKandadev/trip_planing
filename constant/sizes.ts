@@ -1,4 +1,6 @@
-// src/constants/sizes.js
+import {Dimensions} from 'react-native';
+const {width, height} = Dimensions.get('window');
+
 const SIZES = {
   // Text and Headings
   text: {
@@ -30,6 +32,8 @@ const SIZES = {
     xlarge: 20,
     rounded: 50, // for fully rounded shapes
   },
+  width,
+  height,
 };
 
 export default SIZES;

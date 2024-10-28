@@ -1,8 +1,11 @@
 import {createClient} from '@supabase/supabase-js';
-import {SUPABASE_KEY, SUPABASE_URL} from '@env';
+// import {SUPABASE_KEY, SUPABASE_URL} from '@env';
 
-const supabaseUrl = SUPABASE_URL || '';
-const supabaseKey = SUPABASE_KEY || '';
+const supabaseUrl =
+  process.env.SUPABASE_URL || 'https://gggmlvihaojsjczdnwql.supabase.co';
+const supabaseKey =
+  process.env.SUPABASE_KEY ||
+  'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImdnZ21sdmloYW9qc2pjemRud3FsIiwicm9sZSI6ImFub24iLCJpYXQiOjE3Mjk5MjQ3NzcsImV4cCI6MjA0NTUwMDc3N30.vraE2T3nKCLo_Y5uRfSKoYzNLipxkFpA1SdBXeD8CcQ';
 
 import {AppState} from 'react-native';
 import 'react-native-url-polyfill/auto';

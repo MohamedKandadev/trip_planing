@@ -1,5 +1,5 @@
 import {Pressable, StyleSheet, Text, View} from 'react-native';
-import React, {useRef, useState} from 'react';
+import React, {FC, useRef, useState} from 'react';
 import Swiper from 'react-native-swiper';
 import {SafeAreaView} from 'react-native-safe-area-context';
 import {useTheme} from '../../context/ThemeContext';
@@ -7,15 +7,19 @@ import colors from '../../constant/colors';
 import {onBoardingItems} from '../../helpers/pages';
 import OnboardingItem from '../../components/onboarding/OnboardingItem';
 import SIZES from '../../constant/sizes';
+import {NavigationScreenProps} from '../../types/interfaces/pages';
+import {ROUTE} from '../../types/enums/navigation';
 
-const OnBoarding = () => {
+const OnBoarding: FC<NavigationScreenProps> = ({navigation}) => {
   const {setColor, toggleTheme, isDarkTheme} = useTheme();
   const [swiperIndex, setSwiperIndex] = useState<number>(0);
   const swiperRef = useRef<Swiper>(null);
 
   const handleSwiperChange = () => {
-    if (swiperIndex < onBoardingItems.length + 1)
+    if (swiperIndex + 1 < onBoardingItems.length)
       swiperRef.current?.scrollTo(swiperIndex + 1);
+    else if (swiperIndex + 1 === onBoardingItems.length)
+      navigation.navigate(ROUTE.SIGNIN);
   };
 
   return (
