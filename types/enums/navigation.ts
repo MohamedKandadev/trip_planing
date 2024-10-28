@@ -2,6 +2,8 @@ export enum ROUTE {
   ONBOARDING = 'onboarding',
   SIGNIN = 'signin',
   SIGNUP = 'signup',
+  TRIP_INFO = 'trip info',
+  TABS = 'TABS',
 }
 
 export enum TAB_ROUTE {

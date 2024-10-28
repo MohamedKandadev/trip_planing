@@ -9,7 +9,6 @@ import SIZES from '../constant/sizes';
 import {useTheme} from '../context/ThemeContext';
 import colors from '../constant/colors';
 import icons from '../constant/icons';
-import FONTS from '../constant/fonts';
 import TabIcon from '../components/common/TabIcon';
 
 const Tab = createBottomTabNavigator();
@@ -45,6 +44,7 @@ const TabsNavigation = () => {
         name={TAB_ROUTE.NEW_TRIP}
         component={NewTrip}
         options={{
+          freezeOnBlur: true,
           tabBarIcon: ({focused}) => (
             <TabIcon focused={focused} image={icons.plus} title="Explore" />
           ),
