@@ -1,9 +1,5 @@
 import {createSlice} from '@reduxjs/toolkit';
-import {
-  signInUser,
-  signOut,
-  signUpUser,
-} from '../../../api/services/supabaseActions';
+import {signInUser, signOut, signUpUser} from './authActions';
 
 interface AuthState {
   isAuthenticated: boolean;

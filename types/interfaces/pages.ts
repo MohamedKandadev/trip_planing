@@ -30,10 +30,18 @@ export type inputProps = {
 export type buttonProps = {
   title: string;
   onPress?: () => void;
+  isLoading?: boolean;
 };
 
 export type TabIconProps = {
   focused: boolean;
   title: string;
   image: ImageProps;
+};
+
+export type ChooseDateProps = {
+  startDate: string | null;
+  endDate: string | null;
+  setStartDate: (date: string) => void;
+  setEndDate: (date: string) => void;
 };

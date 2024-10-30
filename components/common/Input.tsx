@@ -32,26 +32,6 @@ const Input: FC<inputProps> = ({
               ),
         },
       ]}>
-      <Text
-        style={[
-          styles.inputLabel,
-          {
-            color: isError
-              ? colors.airline_red.light
-              : setColor(
-                  colors.airline_gray.gray.light,
-                  colors.airline_gray.gray.light,
-                ),
-          },
-          {
-            transform:
-              inputRef.current?.isFocused() || value.trim() != ''
-                ? [{translateY: '-140%'}]
-                : [{translateY: '-50%'}],
-          },
-        ]}>
-        {label}
-      </Text>
       <TextInput
         onFocus={() => setIsFocused(true)}
         onBlur={() => setIsFocused(false)}
@@ -60,6 +40,11 @@ const Input: FC<inputProps> = ({
         secureTextEntry={secureTextEntry}
         onChangeText={onChangeText}
         id={name}
+        placeholder={label}
+        placeholderTextColor={setColor(
+          colors.airline_gray.gray.light,
+          colors.airline_gray.gray.light,
+        )}
         style={[
           styles.inputField,
           {

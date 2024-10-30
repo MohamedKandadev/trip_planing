@@ -1,4 +1,10 @@
-import {Pressable, StyleSheet, Text, View} from 'react-native';
+import {
+  ActivityIndicator,
+  Pressable,
+  StyleSheet,
+  Text,
+  View,
+} from 'react-native';
 import React, {FC} from 'react';
 import {useTheme} from '../../context/ThemeContext';
 import FONTS from '../../constant/fonts';
@@ -8,7 +14,7 @@ import {buttonProps} from '../../types/interfaces/pages';
 
 type Props = {};
 
-const Button: FC<buttonProps> = ({title, onPress}) => {
+const Button: FC<buttonProps> = ({title, onPress, isLoading = false}) => {
   const {setColor, toggleTheme} = useTheme();
 
   return (
@@ -23,18 +29,22 @@ const Button: FC<buttonProps> = ({title, onPress}) => {
           ),
         },
       ]}>
-      <Text
-        style={[
-          styles.buttonText,
-          {
-            color: setColor(
-              colors.airline_dark.light,
-              colors.airline_gray.gray300.light,
-            ),
-          },
-        ]}>
-        {title}
-      </Text>
+      {isLoading ? (
+        <ActivityIndicator />
+      ) : (
+        <Text
+          style={[
+            styles.buttonText,
+            {
+              color: setColor(
+                colors.airline_dark.light,
+                colors.airline_gray.gray300.light,
+              ),
+            },
+          ]}>
+          {title}
+        </Text>
+      )}
     </Pressable>
   );
 };

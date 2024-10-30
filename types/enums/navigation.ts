@@ -3,6 +3,7 @@ export enum ROUTE {
   SIGNIN = 'signin',
   SIGNUP = 'signup',
   TRIP_INFO = 'trip info',
+  DESTINATIONS = 'destinations',
   TABS = 'TABS',
 }
 

@@ -1,52 +1,28 @@
+import {Trip} from '../../types/interfaces/slice';
 import {supabase} from '../supabase';
 import {createAsyncThunk} from '@reduxjs/toolkit';
-// import { setAuthenticated, setUser } from '@features/auth/authSlice';
 
-// Async action for signing in a user
-export const signInUser = createAsyncThunk(
-  'auth/signInUser',
-  async (
-    {email, password}: {email: string; password: string},
-    {rejectWithValue},
-  ) => {
-    try {
-      const {data, error} = await supabase.auth.signInWithPassword({
-        email,
-        password,
-      });
-      if (error) throw error;
-      return data.user;
-    } catch (error: unknown) {
-      if (error instanceof Error) return rejectWithValue(error.message);
-      return rejectWithValue(error);
-    }
-  },
-);
-
-export const signUpUser = createAsyncThunk(
-  'auth/signUpUser',
-  async (
-    {email, password, name}: {email: string; password: string; name: string},
-    {rejectWithValue},
-  ) => {
-    try {
-      const {data, error} = await supabase.auth.signUp({
-        options: {
-          data: {name},
+export const createTrip = createAsyncThunk<Trip[], Trip, {rejectValue: string}>(
+  'trip/createTrip',
+  async ({name, startDate, endDate, isPublic, user_id}, {rejectWithValue}) => {
+    const {data, error} = await supabase
+      .from('trip')
+      .insert([
+        {
+          name,
+          start_date: startDate,
+          end_date: endDate,
+          isPublic,
+          user_id,
         },
-        email,
-        password,
-      });
-      if (error) throw error;
-      return data.user;
-    } catch (error: unknown) {
-      if (error instanceof Error) return rejectWithValue(error.message);
-      return rejectWithValue(error);
+      ])
+      .select();
+    console.log('🚀 ~ data:', data);
+    if (error) {
+      return rejectWithValue(error.message);
     }
+
+    // Return the data as Trip[]
+    return data! as Trip[];
   },
 );
-
-export const signOut = createAsyncThunk('auth/signOut', async (_, thunkAPI) => {
-  const {error} = await supabase.auth.signOut();
-  if (error) return thunkAPI.rejectWithValue(error.message);
-});

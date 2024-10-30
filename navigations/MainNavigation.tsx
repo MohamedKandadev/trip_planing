@@ -11,6 +11,7 @@ import {RootState} from '../store';
 import {setUser} from '../store/features/auth/authApi';
 import TabsNavigation from './TabsNavigation';
 import TripInfo from '../screens/TripInfo';
+import Destinations from '../screens/Destinations';
 
 const Stack = createNativeStackNavigator();
 
@@ -31,6 +32,7 @@ const RootNavigator = () => (
     initialRouteName={ROUTE.TABS}
     screenOptions={{headerShown: false}}>
     <Stack.Screen name={ROUTE.TABS} component={TabsNavigation} />
+    <Stack.Screen name={ROUTE.DESTINATIONS} component={Destinations} />
     <Stack.Screen
       name={ROUTE.TRIP_INFO}
       component={TripInfo}
